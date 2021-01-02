@@ -1,0 +1,9 @@
+<h1>お題詳細</h1>
+<%= attachment_image_tag @theme, :image %>
+<p>お題by:<%= @theme.user.name %></p>
+
+  <% if admin_signed_in? %>
+    <%= link_to "このお題を削除", theme_path(@theme), method: :delete %>
+  <% end %>
+
+<p>ここに回答一覧を記載<p>
