@@ -1,2 +1,9 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+<p>ニックネーム：<%= @user.name %></p>
+<p>BuzzSeed ID：<%= @user.unique_code %></p>
+  <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+
+  <p>総合いいね数と、下に回答一覧</p>

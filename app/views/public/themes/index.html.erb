@@ -4,7 +4,12 @@
   <%= attachment_image_tag theme, :image %>
   <% end %>
 
-  <p>お題by:<%= theme.user.name %></p>
+  <p>お題by:
+  <%= link_to user_path(theme.user.id) do %>
+  <%= theme.user.name %>
+  <% end %>
+  </p>
+
   <p>回答数</p>
   <p>ひとことリンク</p>
 

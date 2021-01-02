@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   validates :name, :unique_code, :email, presence: true
   validates :unique_code, uniqueness: true
+
+  attachment :profile_image
 end
