@@ -10,6 +10,37 @@
   </head>
 
   <body>
+        <% if user_signed_in? %>
+      <li>
+        <%= link_to 'お題投稿', new_theme_path %>
+      </li>
+      <li>
+        <%= link_to 'お題一覧', themes_path %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+       <% elsif admin_signed_in? %>
+      <li>
+        <%= link_to 'お題一覧', themes_path %>
+      </li>
+      <li>
+        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+       <% else %>
+      <li>
+        <%= link_to "新規登録", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "管理者新規登録", new_admin_registration_path %>
+      </li>
+      <li>
+        <%= link_to "管理者ログイン", new_admin_session_path %>
+      </li>
+    <% end %>
     <%= yield %>
   </body>
 </html>
