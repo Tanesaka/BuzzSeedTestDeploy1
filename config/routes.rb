@@ -15,8 +15,10 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    resources :themes, only:[:index, :create, :new, :show, :destroy]
     resources :users, only:[:edit, :update, :show, :index]
-    resources :answers, only:[:index, :create, :new, :show, :destroy]
+    resources :themes, only:[:index, :create, :new, :show, :destroy]
+    resources :answers, only:[:index, :create, :new, :show, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
 end
