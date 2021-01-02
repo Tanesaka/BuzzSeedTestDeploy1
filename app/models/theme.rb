@@ -5,4 +5,6 @@ class Theme < ApplicationRecord
   attachment :image
 
   validates :image, :user_id, presence: true
+
+  has_many :answers, dependent: :destroy
 end

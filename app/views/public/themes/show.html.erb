@@ -6,4 +6,14 @@
     <%= link_to "このお題を削除", theme_path(@theme), method: :delete %>
   <% end %>
 
-<p>ここに回答一覧を記載<p>
+
+<!--ヒトコト投稿フォーム-->
+<%= form_with model:@answer, url: answers_path, local:true do |f| %>
+  <label for="inputName">この写真でヒトコト!</label>
+  <%= f.hidden_field :theme_id, value: @theme.id %>
+  <%= f.text_area :content, autofocus: true %>
+  <%= f.submit "変更を保存" %>
+<% end %>
+
+<!--そのお題の回答一覧-->
+  <%= render 'public/answers/list', answers: @answers %>

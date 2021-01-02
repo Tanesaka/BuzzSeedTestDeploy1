@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :themes
+  has_many :answers
 
   validates :name, :unique_code, :email, presence: true
   validates :unique_code, uniqueness: true

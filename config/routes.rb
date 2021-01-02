@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to: 'homes#top'
 
   devise_for :users, controllers: {
@@ -16,5 +17,6 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :themes, only:[:index, :create, :new, :show, :destroy]
     resources :users, only:[:edit, :update, :show, :index]
+    resources :answers, only:[:index, :create, :new, :show, :destroy]
   end
 end

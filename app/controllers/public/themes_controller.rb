@@ -12,6 +12,8 @@ class Public::ThemesController < ApplicationController
 
   def show
     @theme = Theme.find(params[:id])
+    @answer = Answer.new
+    @answers = @theme.answers
   end
 
   def index

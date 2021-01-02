@@ -3,8 +3,9 @@
   <label for="inputName">ニックネーム</label>
   <%= f.text_field :name, autofocus: true, placeholder:"ニックネーム"%>
 
-  <label for="inputName">BuzzSeed ID</label>
-  <%= f.text_field :unique_code, autofocus: true, placeholder:"BuzzSeed ID"%>
+<!--IDは変更できないようにする-->
+  <!--<label for="inputName">BuzzSeed ID</label>-->
+  <%#= f.text_field :unique_code, autofocus: true, placeholder:"BuzzSeed ID"%>
 
     <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
   <label for="inputImage">プロフィール画像</label>
