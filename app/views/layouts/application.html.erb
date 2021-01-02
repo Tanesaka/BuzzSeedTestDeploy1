@@ -18,6 +18,9 @@
         <%= link_to 'お題一覧', themes_path %>
       </li>
       <li>
+        <%= link_to 'マイページ', user_path(current_user) %>
+      </li>
+      <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
        <% elsif admin_signed_in? %>
