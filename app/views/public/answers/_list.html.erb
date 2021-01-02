@@ -1,0 +1,13 @@
+<% answers.each do |answer| %>
+
+<%= attachment_image_tag answer.theme, :image %>
+<p>お題by:<%= answer.theme.user.name %></p>
+
+<h1><%= answer.content %></h1>
+<p>ヒトコトby:<%= answer.user.name %></p>
+
+  <% if answer.user == current_user %>
+    <%= link_to "削除", answer_path(answer.id), method: :delete %>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,10 @@
+<h1>回答詳細</h1>
+<%= attachment_image_tag @theme, :image %>
+<p>お題by:<%= @theme.user.name %></p>
+
+<h1><%= @answer.content %></h1>
+<p>ヒトコトby:<%= @answer.user.name %></p>
+
+  <% if @answer.user == current_user %>
+    <%= link_to "削除", answer_path, method: :delete %>
+  <% end %>
