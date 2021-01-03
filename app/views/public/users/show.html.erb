@@ -1,12 +1,30 @@
 
 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-<p>ニックネーム：<%= @user.name %></p>
-<p>BuzzSeed ID：<%= @user.unique_code %></p>
+
+<table>
+  <tbody>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>BuzzSeed ID</th>
+      <td><%= @user.unique_code %></td>
+    </tr>
+    <tr>
+      <th>総合いいね数</th>
+      <td><%= @favorites_count %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
   <% if @user.id == current_user.id %>
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 
-  <p>総合いいね数と、下に回答一覧</p>
+  <p><%= @user.name %>の回答一覧</p>
 
 
 <!--そのユーザーの回答一覧-->

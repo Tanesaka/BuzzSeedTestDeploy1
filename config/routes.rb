@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
   root to: 'homes#top'
+  get 'about' => 'homes#about'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -15,8 +16,10 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    resources :themes, only:[:index, :create, :new, :show, :destroy]
     resources :users, only:[:edit, :update, :show, :index]
-    resources :answers, only:[:index, :create, :new, :show, :destroy]
+    resources :themes, only:[:index, :create, :new, :show, :destroy]
+    resources :answers, only:[:index, :create, :new, :show, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
 end

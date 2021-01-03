@@ -16,7 +16,7 @@ class Public::AnswersController < ApplicationController
   end
 
   def index
-    @answers = Answer.all
+    @answers = Answer.page(params[:page]).reverse_order
   end
 
   def destroy
