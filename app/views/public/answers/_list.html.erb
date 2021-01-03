@@ -25,12 +25,11 @@
         ♡<%= answer.favorites.count %> いいね
       <% end %>
     </p>
+
+
   <% end %>
 
-<!--削除リンク-->
-  <%# if answer.user.id == current_user.id %>
-    <%#= link_to "削除", answer_path(answer.id), method: :delete %>
-  <%# end %>
+<p><%= link_to "#{answer.comments.count} コメント", answer_path(answer.id) %></p>
 
 <% end %>
 <%= paginate answers %>
