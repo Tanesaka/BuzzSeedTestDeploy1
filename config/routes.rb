@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users, only:[:edit, :update, :show, :index]
     resources :themes, only:[:index, :create, :new, :show, :destroy]
+    get 'answers/rankindex' => 'answers#rankindex'
     resources :answers, only:[:index, :create, :new, :show, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
