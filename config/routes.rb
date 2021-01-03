@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
 
+  namespace :admins do
+    resources :themes, only:[:index, :destroy]
+  end
 
   scope module: :public do
     resources :users, only:[:edit, :update, :show, :index]
