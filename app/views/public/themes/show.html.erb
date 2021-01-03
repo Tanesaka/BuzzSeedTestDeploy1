@@ -1,0 +1,19 @@
+<h1>お題詳細</h1>
+<%= attachment_image_tag @theme, :image %>
+<p>お題by:<%= @theme.user.name %></p>
+
+  <% if admin_signed_in? %>
+    <%= link_to "このお題を削除", theme_path(@theme), method: :delete %>
+  <% end %>
+
+
+<!--ヒトコト投稿フォーム-->
+<%= form_with model:@answer, url: answers_path, local:true do |f| %>
+  <label for="inputName">この写真でヒトコト!</label>
+  <%= f.hidden_field :theme_id, value: @theme.id %>
+  <%= f.text_area :content, rows:'4',autofocus: true %>
+  <%= f.submit "変更を保存" %>
+<% end %>
+
+<!--そのお題の回答一覧-->
+  <%= render 'public/answers/list', answers: @answers %>

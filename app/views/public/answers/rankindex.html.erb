@@ -1,0 +1,6 @@
+<h2>回答一覧</h2>
+
+<h3><%= link_to "新着順", answers_path %></h3>
+<h3><%= link_to "いいね数順", answers_rankindex_path %></h3>
+
+<%= render 'public/answers/list', answers: @answers %>

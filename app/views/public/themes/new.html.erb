@@ -1,0 +1,6 @@
+<h1>お題画像投稿フォーム</h1>
+<%= form_with model: @theme, url: themes_path, method: :post, local:true do |f| %>
+  <h4>画像</h4>
+  <%= f.attachment_field :image %>
+  <%= f.submit '投稿' %>
+<% end %>

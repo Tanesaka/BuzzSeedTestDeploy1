@@ -1,0 +1,5 @@
+<h2>お題一覧</h2>
+<h3><%= link_to "新着順", themes_path %></h3>
+<h3><%= link_to "回答数順", themes_rankindex_path %></h3>
+
+<%= render 'public/themes/list', themes: @themes %>

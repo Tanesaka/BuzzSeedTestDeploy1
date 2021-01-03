@@ -1,3 +1,28 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  root to: 'homes#top'
+  get 'about' => 'homes#about'
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
+  devise_for :admins, controllers: {
+    registrations: 'admins/registrations',
+    sessions: 'admins/sessions'
+  }
+
+
+  scope module: :public do
+    resources :users, only:[:edit, :update, :show, :index]
+    get 'themes/rankindex' => 'themes#rankindex'
+    resources :themes, only:[:index, :create, :new, :show, :destroy]
+    get 'answers/rankindex' => 'answers#rankindex'
+    resources :answers, only:[:index, :create, :new, :show, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+    end
+  end
 end
