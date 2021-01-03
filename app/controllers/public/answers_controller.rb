@@ -20,6 +20,12 @@ class Public::AnswersController < ApplicationController
     @answers = Answer.page(params[:page]).reverse_order
   end
 
+  # いいね数順の回答一覧
+  def rankindex
+    answer = Answer.all.sort {|a,b| b.favorites.count <=> a.favorites.count}
+    @answers = Kaminari.paginate_array(answer).page(params[:page])
+  end
+
   def destroy
     answer = Answer.find(params[:id])
     answer.destroy
