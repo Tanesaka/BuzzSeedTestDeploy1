@@ -21,6 +21,12 @@ class Public::ThemesController < ApplicationController
     @themes = Theme.page(params[:page]).reverse_order
   end
 
+    # 回答数順のお題一覧
+  def rankindex
+    theme = Theme.all.sort {|a,b| b.answers.count <=> a.answers.count}
+    @themes = Kaminari.paginate_array(theme).page(params[:page])
+  end
+
   def destroy
     @theme = Theme.find(params[:id])
     @theme.destroy
