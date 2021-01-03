@@ -15,13 +15,15 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :themes, only:[:index, :destroy]
+    resources :themes, only:[:index, :show, :destroy]
+    resources :answers, only:[:index, :show, :destroy]
+    resources :comments, only:[:destroy]
   end
 
   scope module: :public do
     resources :users, only:[:edit, :update, :show, :index]
     get 'themes/rankindex' => 'themes#rankindex'
-    resources :themes, only:[:index, :create, :new, :show, :destroy]
+    resources :themes, only:[:index, :create, :new, :show]
     get 'answers/rankindex' => 'answers#rankindex'
     resources :answers, only:[:index, :create, :new, :show, :destroy] do
       resource :favorites, only: [:create, :destroy]

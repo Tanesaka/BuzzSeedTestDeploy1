@@ -3,6 +3,11 @@ class Admins::ThemesController < ApplicationController
     @themes = Theme.page(params[:page]).reverse_order
   end
 
+  def show
+    @theme = Theme.find(params[:id])
+    @answers = @theme.answers.page(params[:page]).reverse_order
+  end
+
   def destroy
     @theme = Theme.find(params[:id])
     @theme.destroy

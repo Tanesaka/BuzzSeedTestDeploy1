@@ -32,6 +32,9 @@
         <%= link_to 'お題一覧', admins_themes_path %>
       </li>
       <li>
+        <%= link_to '回答一覧', admins_answers_path %>
+      </li>
+      <li>
         <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
        <% else %>
