@@ -4,9 +4,12 @@
 <%= attachment_image_tag answer.theme, :image %>
 <% end %>
 
-<p>お題by:<%= answer.theme.user.name %></p>
 
-<h1><%= answer.content %></h1>
+<h1>
+  <%= link_to answer_path(answer.id) do %>
+  <%= answer.content %>
+  <% end %>
+</h1>
 <p>ヒトコトby:<%= answer.user.name %></p>
 
 <!--イイね部分-->
@@ -25,8 +28,9 @@
   <% end %>
 
 <!--削除リンク-->
-  <% if answer.user == current_user %>
-    <%= link_to "削除", answer_path(answer.id), method: :delete %>
-  <% end %>
+  <%# if answer.user.id == current_user.id %>
+    <%#= link_to "削除", answer_path(answer.id), method: :delete %>
+  <%# end %>
 
 <% end %>
+<%= paginate answers %>

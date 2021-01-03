@@ -13,11 +13,12 @@ class Public::ThemesController < ApplicationController
   def show
     @theme = Theme.find(params[:id])
     @answer = Answer.new
-    @answers = @theme.answers
+    @answers = @theme.answers.page(params[:page]).reverse_order
   end
 
   def index
-    @themes = Theme.all
+    # kaminariのpageメゾッド、新着順＆ページング
+    @themes = Theme.page(params[:page]).reverse_order
   end
 
   def destroy
