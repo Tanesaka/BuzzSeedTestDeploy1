@@ -6,5 +6,26 @@
 <p>ヒトコトby:<%= @answer.user.name %></p>
 
   <% if @answer.user == current_user %>
-    <%= link_to "削除", answer_path, method: :delete %>
+    <%= link_to "この回答を削除", answer_path, method: :delete %>
   <% end %>
+
+<p>コメント件数：<%= @answer.comments.count %></p>
+<% @answer.comments.each do |comment| %>
+  <%= comment.user.name %>
+  <div>
+  <p><%= comment.created_at.strftime('%Y/%m/%d') %><br>
+  <%= comment.content %></p>
+  </div>
+
+    <% if comment.user == current_user %>
+    <div>
+    <%= link_to "削除", answer_comment_path(comment.answer, comment), method: :delete %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<%= form_with(model:[@answer, @comment], local: true) do |f| %>
+  <%= f.text_area :content, rows:'4',placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+<% end %>

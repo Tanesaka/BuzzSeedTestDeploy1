@@ -13,6 +13,7 @@ class Public::AnswersController < ApplicationController
   def show
     @answer = Answer.find(params[:id])
     @theme = @answer.theme
+    @comment = Comment.new
   end
 
   def index

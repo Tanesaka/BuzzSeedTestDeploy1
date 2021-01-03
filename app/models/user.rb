@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :themes, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+  has_many :comments, dependent: :destroy
+
   validates :name, :unique_code, :email, presence: true
   validates :unique_code, uniqueness: true
 
