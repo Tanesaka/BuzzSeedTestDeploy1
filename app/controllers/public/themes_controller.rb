@@ -25,6 +25,24 @@ class Public::ThemesController < ApplicationController
   def rankindex
     theme = Theme.all.sort {|a,b| b.answers.count <=> a.answers.count}
     @themes = Kaminari.paginate_array(theme).page(params[:page])
+    @answer = Answer.new
+  end
+
+  def introduction
+  end
+
+  def random
+    # randomに取得し、idに代入、最後に一倍最初のidを1つ取得
+    @theme = Theme.where( 'id >= ?', rand(Theme.first.id..Theme.last.id) ).first
+    @count = 0
+    while @theme.answers.blank? do
+      @theme = Theme.where( 'id >= ?', rand(Theme.first.id..Theme.last.id) ).first
+      @count += 1
+      if @count == 10
+        break
+      end
+    end
+    @answer = Answer.new
   end
 
   def destroy

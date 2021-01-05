@@ -1,0 +1,14 @@
+<h1>お題詳細</h1>
+<%= attachment_image_tag @theme, :image %>
+<p>お題by:<%= @theme.user.name %></p>
+
+
+<!--ヒトコト投稿フォーム-->
+<%= form_with model:@answer, url: answers_path, local:true do |f| %>
+  <label for="inputName">この写真でヒトコト!</label>
+  <%= f.hidden_field :theme_id, value: @theme.id %>
+  <%= f.text_area :content, rows:'4',autofocus: true %>
+  <%= f.submit "変更を保存" %>
+<% end %>
+
+<%= link_to '他ユーザーの回答を見る', theme_path(@theme) %>
