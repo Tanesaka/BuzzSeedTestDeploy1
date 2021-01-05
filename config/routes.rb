@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
+    resources :users, only:[:index, :show]
     resources :themes, only:[:index, :show, :destroy]
     resources :answers, only:[:index, :show, :destroy] do
       resources :comments, only:[:destroy]
