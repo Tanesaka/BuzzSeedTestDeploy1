@@ -24,15 +24,6 @@
 ##### 他ユーザーのリアクションで楽しむのも面白いと思います。
 
 
-## ER図
-https://docs.google.com/spreadsheets/d/1BE3HBA6cFMcWU0uP3S0nfOuqqgUfKZMnHtWYUX0AjeY/edit?usp=sharing
-
-## テーブル定義書
-https://docs.google.com/spreadsheets/d/1BE3HBA6cFMcWU0uP3S0nfOuqqgUfKZMnHtWYUX0AjeY/edit?usp=sharing
-
-## 設計書
-https://docs.google.com/spreadsheets/d/1oxDPVm3BgNxVg62aKzWOG4eojwNSwReMhV0aFR0-02I/edit?usp=sharing
-
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1L_Y3FERe6QtfSj0bW615eCOrHx_E-gqV8VqNmTj2XBE/edit?usp=sharing
 
