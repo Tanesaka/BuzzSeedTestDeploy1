@@ -2,10 +2,6 @@
 <%= attachment_image_tag @theme, :image %>
 <p>お題by:<%= @theme.user.name %></p>
 
-  <% if admin_signed_in? %>
-    <%= link_to "このお題を削除", theme_path(@theme), method: :delete %>
-  <% end %>
-
 
 <!--ヒトコト投稿フォーム-->
 <%= form_with model:@answer, url: answers_path, local:true do |f| %>
