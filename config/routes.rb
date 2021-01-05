@@ -16,8 +16,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :themes, only:[:index, :show, :destroy]
-    resources :answers, only:[:index, :show, :destroy]
-    resources :comments, only:[:destroy]
+    resources :answers, only:[:index, :show, :destroy] do
+      resources :comments, only:[:destroy]
+    end
   end
 
   scope module: :public do

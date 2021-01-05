@@ -17,6 +17,6 @@
   </div>
 
     <div>
-    <%= link_to "このコメントを削除", admins_comment_path(comment.answer, comment), method: :delete %>
+    <%= link_to "このコメントを削除", admins_answer_comment_path(comment.answer, comment), method: :delete %>
     </div>
   <% end %>
