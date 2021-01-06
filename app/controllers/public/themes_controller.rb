@@ -6,8 +6,11 @@ class Public::ThemesController < ApplicationController
   def create
     @theme = Theme.new(theme_params)
     @theme.user_id = current_user.id
-    @theme.save
+    if @theme.save
     redirect_to themes_path
+    else
+      render "new"
+    end
   end
 
   def show

@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
   validates :name, :unique_code, :email, presence: true
   validates :unique_code, uniqueness: true
+  validates :unique_code, format: { with: /[a-z\d]{6,}/i, message: "は6文字以上の英数字が使えます" }
 
 
   attachment :profile_image

@@ -19,10 +19,10 @@
 </table>
 
 
-
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+<% if current_user == User.find_by(email: 'guest@example.com') %>
+<% elsif @user.id == current_user.id %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
 
   <p><%= @user.name %>の回答一覧</p>
 

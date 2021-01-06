@@ -60,6 +60,15 @@
         <%= link_to "管理者ログイン", new_admin_session_path %>
       </li>
     <% end %>
+
+    <% if notice.present? %>
+      <h3><%= flash[:notice] %></h3>
+    <% end %>
+
+    <% if alert.present? %>
+      <h3><%= flash[:alert] %></h3>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
