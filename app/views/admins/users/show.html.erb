@@ -1,4 +1,3 @@
-
 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
 <table>
@@ -18,14 +17,8 @@
   </tbody>
 </table>
 
-
-<% if current_user == User.find_by(email: 'guest@example.com') %>
-<% elsif @user.id == current_user.id %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-<% end %>
-
   <p><%= @user.name %>の回答一覧</p>
 
 
 <!--そのユーザーの回答一覧-->
-  <%= render 'public/answers/list', answers: @answers %>
+  <%= render 'admins/answers/list', answers: @answers %>

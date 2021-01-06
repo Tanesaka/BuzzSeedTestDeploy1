@@ -12,6 +12,9 @@
   <body>
         <% if user_signed_in? %>
       <li>
+        <%= link_to 'ランダムお題', themes_introduction_path %>
+      </li>
+      <li>
         <%= link_to 'お題投稿', new_theme_path %>
       </li>
       <li>
@@ -35,6 +38,9 @@
         <%= link_to '回答一覧', admins_answers_path %>
       </li>
       <li>
+        <%= link_to 'ユーザー一覧', admins_users_path %>
+      </li>
+      <li>
         <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
        <% else %>
@@ -48,12 +54,24 @@
         <%= link_to "ログイン", new_user_session_path %>
       </li>
       <li>
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+      </li>
+      <li>
         <%= link_to "管理者新規登録", new_admin_registration_path %>
       </li>
       <li>
         <%= link_to "管理者ログイン", new_admin_session_path %>
       </li>
     <% end %>
+
+    <% if notice.present? %>
+      <h3><%= flash[:notice] %></h3>
+    <% end %>
+
+    <% if alert.present? %>
+      <h3><%= flash[:alert] %></h3>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

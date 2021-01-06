@@ -1,3 +1,8 @@
+
+<% if answers.blank? %>
+<p>まだ回答はありません。</p>
+<% end %>
+
 <% answers.each do |answer| %>
 
 <%= link_to theme_path(answer.theme.id) do %>
