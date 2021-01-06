@@ -18,8 +18,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, :unique_code, :email, presence: true
+  validates :name, length: { minimum: 2, maximum: 20}
   validates :unique_code, uniqueness: true
-  validates :unique_code, format: { with: /[a-z\d]{6,}/i, message: "は6文字以上の英数字が使えます" }
+  # 5-12文字の半角英数字
+  validates :unique_code, format: { with: /\A[a-z0-9]+\z/i,message: "は半角英数字である必要があります"}
+  validates :unique_code, length: { minimum: 5, maximum: 12}
 
 
   attachment :profile_image

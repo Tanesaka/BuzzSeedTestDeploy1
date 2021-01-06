@@ -6,8 +6,12 @@ class Public::AnswersController < ApplicationController
   def create
     answer = Answer.new(answer_params)
     answer.user_id = current_user.id
-    answer.save
+    if answer.save
     redirect_to answer_path(answer.id)
+    else
+      # お題一覧画面へ推移
+      redirect_to themes_path, alert: '回答を反映できませんでした…。※1文字以上入力してください。'
+    end
   end
 
   def show
