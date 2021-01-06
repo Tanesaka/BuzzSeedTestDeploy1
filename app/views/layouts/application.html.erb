@@ -38,6 +38,9 @@
         <%= link_to '回答一覧', admins_answers_path %>
       </li>
       <li>
+        <%= link_to 'ユーザー一覧', admins_users_path %>
+      </li>
+      <li>
         <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
        <% else %>
