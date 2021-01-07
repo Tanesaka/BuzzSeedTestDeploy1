@@ -1,22 +1,57 @@
-<h1>回答詳細</h1>
-<%= attachment_image_tag @theme, :image %>
-<p>お題by:<%= @theme.user.name %></p>
+<div class="containar">
+  <div class="row">
+    <div class="col-md-5 col-xs-10 mx-auto">
+      <h2 class="border-bottom border-gray mt-4">
+        <i class="fab fa-pagelines"></i> コメント
+      </h2>
 
-<h1><%= @answer.content %></h1>
-<p>ヒトコトby:<%= @answer.user.name %></p>
+<article class="mt-4 shadow-lg">
+<%= attachment_image_tag @theme, :image, class:"card-img-top"; %>
+  <h1 class="font-weight-bold m-3">
+      <%= @answer.content %>
+  </h1>
+<nav class="navbar-expand mt-2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ml-4 h4">
+        <%= link_to user_path(@answer.user.id) do %>
+          <i class="fas fa-user"></i>
+        <%= @answer.user.name %>
+        <% end %>
+      </li>
+      <li class="nav-item ml-4 h4">
+          <i class="fas fa-comment"></i>
+        <%= @answer.comments.count %>
+      </li>
+      <% if @answer.favorited_by?(current_user) %>
+        <li class="nav-item ml-4 h4">
+          <%= link_to answer_favorites_path(@answer), method: :delete do %>
+            <i class="fas fa-heart text-danger"></i><%= @answer.favorites.count %>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item ml-4 h4">
+          <%= link_to answer_favorites_path(@answer), method: :post do %>
+            <i class="far fa-heart"></i><%= @answer.favorites.count %>
+          <% end %>
+        </li>
+<% end %>
+          <% if @answer.user == current_user %>
+        <li class="nav-item ml-4 h4">
+    <%= link_to answer_path, method: :delete do %>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+<hr class="w-75 mx-auto">
 
-  <% if @answer.user == current_user %>
-    <%= link_to "この回答を削除", answer_path, method: :delete %>
-  <% end %>
-
-<p>コメント件数：<%= @answer.comments.count %></p>
 <% @answer.comments.each do |comment| %>
   <%= comment.user.name %>
   <div>
   <p><%= comment.created_at.strftime('%Y/%m/%d') %><br>
   <%= comment.content %></p>
   </div>
-
     <% if comment.user == current_user %>
     <div>
     <%= link_to "削除", answer_comment_path(comment.answer, comment), method: :delete %>
@@ -26,6 +61,11 @@
 
 
 <%= form_with(model:[@answer, @comment], local: true) do |f| %>
-  <%= f.text_area :content, rows:'4',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+  <%= f.text_area :content, rows:'4', class: "mt-2 w-100", placeholder: "コメントをここに" %>
+  <%= f.submit "投稿する", class: "mt-2 btn btn-secondary btn-block w-100" %>
 <% end %>
+
+</article>
+   </div>
+  </div>
+</div>
