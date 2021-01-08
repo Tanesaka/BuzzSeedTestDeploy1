@@ -127,3 +127,13 @@ header{
     opacity: 0.8;
     background-color:#fafafa;
 }
+
+footer{
+    background-color:#929292;
+}
+
+.card-img-top {
+    max-height:430px;
+    object-fit: contain;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}

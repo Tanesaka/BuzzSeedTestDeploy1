@@ -26,14 +26,14 @@
              <li class="nav-item ml-4 h4">
                <%= link_to 'お題', themes_path %>
              </li>
-             <li class="nav-item ml-4 h4">
-               <%= link_to user_path(current_user) do %>
-               <%= current_user.unique_code %>
-               <% end %>
-             </li>
              <li class="nav-item ml-4 h3">
                <%= link_to destroy_user_session_path, method: :delete do %>
                <i class="fas fa-sign-out-alt"></i>
+               <% end %>
+             </li>
+             <li class="nav-item ml-4 h4">
+               <%= link_to user_path(current_user) do %>
+               <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size: "40x40", class:"rounded-circle"; %>
                <% end %>
              </li>
            <% elsif admin_signed_in? %>
@@ -82,5 +82,12 @@
     <h3><%= flash[:alert] %></h3>
   <% end %>
   <%= yield %>
+
+<footer class="mt-5 pt-5">
+<div>
+  <%= link_to "管理者ログイン", new_admin_session_path, class:"text-white"; %>
+</div>
+</footer>
+
    </body>
 </html>
