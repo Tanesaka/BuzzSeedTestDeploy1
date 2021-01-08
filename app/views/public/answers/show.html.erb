@@ -42,8 +42,11 @@
 <%= render 'public/comments/comments_list', answer: @answer %>
 </div>
         <div>
-          <%= form_with(model:[@answer, @comment]) do |f| %>
+          <%= form_with model:[@answer, @comment], remote: true do |f| %>
             <%= f.text_area :content, rows:'4', class: "mt-2 w-100", placeholder: "コメントをここに" %>
+
+            <!--下記試したが変わらず1/8-->
+            <%#= f.hidden_field :user_id, value: current_user.id %>
              <%= f.submit "投稿する", class: "mt-2 btn btn-secondary btn-block w-100" %>
           <% end %>
         </div>
