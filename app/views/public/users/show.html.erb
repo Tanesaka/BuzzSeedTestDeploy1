@@ -7,8 +7,8 @@
 
 
   <div class="row mt-2">
-    <div class="col-4">
-<%= attachment_image_tag @user, :profile_image, :fill, 120, 120, format: 'jpeg', fallback: "no_image.jpg", size: "120x120", class:"rounded-circle"; %>
+    <div class="col-4 mt-2">
+<%= attachment_image_tag @user, :profile_image, :fill, 140, 140, format: 'jpeg', fallback: "no_image.jpg", size: "140x140", class:"rounded-circle"; %>
   </div>
 
 
@@ -23,12 +23,23 @@
       <th><i class="fas fa-seedling"></i>ID：</th>
       <td><%= @user.unique_code %></td>
     </tr>
+      <tr>
+      <th>フォロー：</th>
+      <td><%= @user.followings.count %></td>
+    </tr>
+    </tr>
+      <tr>
+      <th>フォロワー：</th>
+      <td><%= @user.followers.count %></td>
+    </tr>
   </tbody>
 </table>
 
+<%= render 'public/relations/follow_btn', user: @user %>
+
 <% if current_user == User.find_by(email: 'guest@example.com') %>
 <% elsif @user.id == current_user.id %>
-  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn w-50 mt-2"; %>
+  <%= link_to "編集",edit_user_path(@user), class:"btn-secondary btn w-50 mt-2 btn-sm"; %>
 <% end %>
 
   </div>

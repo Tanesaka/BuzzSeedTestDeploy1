@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users, only:[:edit, :update, :show, :index]
+    resources :relations, only: [:create, :destroy]
     get 'themes/rankindex' => 'themes#rankindex'
     get 'themes/random' => 'themes#random'
     get 'themes/introduction' => 'themes#introduction'

@@ -23,7 +23,8 @@ class Public::UsersController < ApplicationController
     end
   end
 
-
+  def index
+  end
 
   private
 
