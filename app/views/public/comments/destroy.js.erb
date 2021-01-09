@@ -1,2 +1,2 @@
-$("#answer_<%= @answer.id %> .comments-count").html("<i class="fas fa-comment"></i><%= @answer.comments.count %>");
+$(".comments-count").html("<%= @answer.comments.count %>");
 $(".comments-list").html("<%= j(render 'public/comments/comments_list', answer: @answer) %>");

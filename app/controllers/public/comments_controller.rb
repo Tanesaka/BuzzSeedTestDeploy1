@@ -2,10 +2,6 @@ class Public::CommentsController < ApplicationController
   def create
     @answer = Answer.find(params[:answer_id])
     comment = current_user.comments.new(comment_params)
-
-    # 下記試したが変わらず1/8
-    # comment = Comment.new(comment_params)
-    # comment.user_id = current_user.id
     comment.answer_id = @answer.id
     unless comment.save
       redirect_to answers_path, alert: 'コメントを反映できませんでした。※1文字以上入力してください。'
