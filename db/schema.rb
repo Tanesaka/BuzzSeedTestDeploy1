@@ -55,16 +55,6 @@ ActiveRecord::Schema.define(version: 2021_01_08_173958) do
     t.index ["user_id", "follow_id"], name: "index_relations_on_user_id_and_follow_id", unique: true
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "answer_id"
-    t.integer "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_reviews_on_answer_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
   create_table "themes", force: :cascade do |t|
     t.string "image_id"
     t.integer "user_id"
